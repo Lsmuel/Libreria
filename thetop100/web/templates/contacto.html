@@ -1,0 +1,139 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{% static 'web/css/estilos.css'%}">
+   <link rel="stylesheet" href="{% static 'web/css/contacto.css'%}">
+   <link rel="stylesheet" href="{% static 'web/css/bootstrap.min.css'%}">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <script type="text/javascript" src="{% static 'web/js/jquery-3.2.1.slim.min.js'%}" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="{% static 'web/js/popper.min.js'%}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="{% static 'web/js/bootstrap.min.js'%}" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+   <script type="text/javascript" src="{% static 'web/js/jquery.validate.js'%}"></script>
+   <script type="text/javascript" src="{% static 'web/js/formcontacto.js'%}"></script>
+   <title>Contacto</title>
+</head>
+<body>
+   <nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones">
+         <span class="navbar-toggler-icon"></span>
+      </button>   
+      <div class="collapse navbar-collapse" id="opciones">   
+         <ul class="navbar-nav derecha">
+            <li class="nav-item">
+               <a class="nav-link" href="/">Inicio</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link" href="galeria">Galería de fotos</a>
+            </li>            
+            <li class="nav-item contactanos">
+              <a class="nav-link" href="contacto">Contáctanos</a>
+           </li> 
+            <li class="nav-item mensajes">
+               <a class="nav-link" href="ver">Mensajes</a>
+            </li>       
+         </ul>
+      </div>
+   </nav>
+  
+   <div class="container col-sm-12">
+      <h1 class="titulo">
+         ¡Contáctanos!
+      </h1>
+      <!-- <div class="formulario col-md-10 col-sm-12">
+         <aside class="side col-md-4 col-sm-12">
+            <img class="logoside" src="{% static 'web/img/LogitoMenu.jpg'%}">
+            <p class="sloganside">Tu opinión es más importante de lo que crees.</p>
+      </aside>
+            <form id="formcontacto" class="form col-md-6 col-sm-12">
+               <div class="form-group">
+                  <label>Nombre y Apellido: </label>
+                  <input type="text" name="nombre" id="nombre" required class="form-control" placeholder="Ingresa tu nombre y apellido" onchange="CambiarMayusculas()">
+               </div>
+               <div class="form-group">
+                  <label>Correo Electrónico: </label>
+                  <input type="text" name="email" required placeholder="nombre@dominio.cl" class="form-control">
+               </div>
+               <div class="form-group">
+                  <label>Teléfono: </label>
+                  <input type="text" name="fono" minlength="12" class="form-control" placeholder="+56 9 xxxx xxxx">
+               </div>
+               <div class="form-group">
+                  <label>Asunto: </label>
+                  <input type="text" name="asunto" minlength="5" required class="form-control" placeholder="Ingresa el asunto de tu mensaje">
+               </div>
+               <div class="form-group">
+                  <label>Mensaje:</label>
+                  <textarea type="text" name="mensaje" minlength="10" class="form-control" required placeholder="Ingresa aquí tu mensaje" rows="5"></textarea>
+               </div>
+               <br>
+               <button class="btn btn-primary">Enviar</button>
+               </form>
+      </div> -->
+      <form action="" method="post" class="formulario">
+         {% csrf_token %}
+         <div class="form-group">
+         {{ mensaje_form.nomApellido.label }}
+         {{ mensaje_form.nomApellido }}
+         </div>
+         <div class="form-group">
+            {{ mensaje_form.email.label }}
+            {{ mensaje_form.email }}
+         </div>
+         <div class="form-group">
+            {{ mensaje_form.telefono.label }}
+            {{ mensaje_form.telefono }}
+         </div>
+         <div class="form-group">
+            {{ mensaje_form.asunto.label }}
+            {{ mensaje_form.asunto }}
+         </div>
+         <div class="form-group">
+            {{ mensaje_form.mensaje.label }}
+            {{ mensaje_form.mensaje }}
+         </div>
+         <div class="form-group">
+            <input type="submit" class="btn btn-primary" id="enviar" value="Enviar">
+            <input type="reset" class="btn btn-danger" id="limpiar" value="Limpiar">
+         </div>
+      </form>
+      </div>
+      
+
+   
+      <footer class="footer text-faded text-center py-5">
+         <div class="container">
+           <p class="m-0">
+              <a href="#" class="link">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              <a href="#" class="link">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              <a href="#" class="link">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+          </p>
+           <p class="m-0 mbt">
+              <a href="sample.html" class="link">Política de privacidad</a> ·
+              <a href="sample.html" class="link">Aviso legal</a> ·
+              <a href="sample.html" class="link">Cookies</a>
+         </p>
+           <p class="m-0 mbt1">&copy; Libreria Top 2022</p>
+         </div>
+        </footer>
+
+</body>
+</html>
